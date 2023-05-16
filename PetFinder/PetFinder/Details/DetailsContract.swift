@@ -3,13 +3,14 @@
 //  PetFinder
 //
 //  Created by Nadezhda Zenkova on 16.05.2023.
-//  
 //
 
 import UIKit
 
-protocol DetailsViewModelProtocol: ViewModelProtocolBase {}
+protocol DetailsViewModelProtocol: ViewModelProtocolBase, ObservableObject {
+    func onAppear()
+}
 
-protocol DetailsAssemblyProtocol {}
+protocol DetailsAssemblyProtocol: Assembly {}
 
-protocol DetailsRouterProtocol: AnyObject {}
+protocol DetailsRouterProtocol: RouterProtocolBase {}
