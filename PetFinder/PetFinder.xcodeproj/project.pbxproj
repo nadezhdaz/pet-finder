@@ -24,6 +24,7 @@
 		3EB5851E2A139055007F7CD3 /* DetailsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585192A139055007F7CD3 /* DetailsAssembly.swift */; };
 		3EB5851F2A139055007F7CD3 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5851A2A139055007F7CD3 /* DetailsView.swift */; };
 		3EB585202A139055007F7CD3 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB5851B2A139055007F7CD3 /* DetailsViewModel.swift */; };
+		4197B9912A13946400FAF50C /* PetFinderAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197B9902A13946400FAF50C /* PetFinderAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		3EB585192A139055007F7CD3 /* DetailsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembly.swift; sourceTree = "<group>"; };
 		3EB5851A2A139055007F7CD3 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		3EB5851B2A139055007F7CD3 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		4197B9902A13946400FAF50C /* PetFinderAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +119,8 @@
 			children = (
 				3EB584CC2A138E10007F7CD3 /* PetFinderApp.swift */,
 				3EB584CE2A138E10007F7CD3 /* ContentView.swift */,
-				3EB584F72A138E5A007F7CD3 /* Home */,
-				3EB585022A138E79007F7CD3 /* Details */,
+				4197B98E2A13940600FAF50C /* Modules */,
+				4197B98F2A13941700FAF50C /* Networking */,
 				3EB584D02A138E12007F7CD3 /* Assets.xcassets */,
 				3EB584D22A138E12007F7CD3 /* PetFinder.entitlements */,
 				3EB584D32A138E12007F7CD3 /* Preview Content */,
@@ -173,6 +175,23 @@
 				3EB5851B2A139055007F7CD3 /* DetailsViewModel.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		4197B98E2A13940600FAF50C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3EB584F72A138E5A007F7CD3 /* Home */,
+				3EB585022A138E79007F7CD3 /* Details */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4197B98F2A13941700FAF50C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4197B9902A13946400FAF50C /* PetFinderAPIClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +332,7 @@
 				3EB5851C2A139055007F7CD3 /* DetailsContract.swift in Sources */,
 				3EB5851F2A139055007F7CD3 /* DetailsView.swift in Sources */,
 				3EB585152A13903F007F7CD3 /* HomeView.swift in Sources */,
+				4197B9912A13946400FAF50C /* PetFinderAPIClient.swift in Sources */,
 				3EB584CF2A138E10007F7CD3 /* ContentView.swift in Sources */,
 				3EB5851D2A139055007F7CD3 /* DetailsRouter.swift in Sources */,
 				3EB584CD2A138E10007F7CD3 /* PetFinderApp.swift in Sources */,
