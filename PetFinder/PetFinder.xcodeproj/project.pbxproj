@@ -14,6 +14,16 @@
 		3EB584DF2A138E12007F7CD3 /* PetFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584DE2A138E12007F7CD3 /* PetFinderTests.swift */; };
 		3EB584E92A138E12007F7CD3 /* PetFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584E82A138E12007F7CD3 /* PetFinderUITests.swift */; };
 		3EB584EB2A138E12007F7CD3 /* PetFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584EA2A138E12007F7CD3 /* PetFinderUITestsLaunchTests.swift */; };
+		3EB584FD2A138E72007F7CD3 /* HomeContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584F82A138E72007F7CD3 /* HomeContract.swift */; };
+		3EB584FE2A138E72007F7CD3 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584F92A138E72007F7CD3 /* HomeRouter.swift */; };
+		3EB584FF2A138E72007F7CD3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584FA2A138E72007F7CD3 /* HomeViewController.swift */; };
+		3EB585002A138E72007F7CD3 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584FB2A138E72007F7CD3 /* HomeAssembly.swift */; };
+		3EB585012A138E72007F7CD3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB584FC2A138E72007F7CD3 /* HomeViewModel.swift */; };
+		3EB585082A138E9F007F7CD3 /* DetailsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585032A138E9F007F7CD3 /* DetailsContract.swift */; };
+		3EB585092A138E9F007F7CD3 /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585042A138E9F007F7CD3 /* DetailsRouter.swift */; };
+		3EB5850A2A138E9F007F7CD3 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585052A138E9F007F7CD3 /* DetailsViewController.swift */; };
+		3EB5850B2A138E9F007F7CD3 /* DetailsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585062A138E9F007F7CD3 /* DetailsAssembly.swift */; };
+		3EB5850C2A138E9F007F7CD3 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB585072A138E9F007F7CD3 /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +55,16 @@
 		3EB584E42A138E12007F7CD3 /* PetFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB584E82A138E12007F7CD3 /* PetFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderUITests.swift; sourceTree = "<group>"; };
 		3EB584EA2A138E12007F7CD3 /* PetFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3EB584F82A138E72007F7CD3 /* HomeContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContract.swift; sourceTree = "<group>"; };
+		3EB584F92A138E72007F7CD3 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		3EB584FA2A138E72007F7CD3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3EB584FB2A138E72007F7CD3 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
+		3EB584FC2A138E72007F7CD3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3EB585032A138E9F007F7CD3 /* DetailsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsContract.swift; sourceTree = "<group>"; };
+		3EB585042A138E9F007F7CD3 /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		3EB585052A138E9F007F7CD3 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		3EB585062A138E9F007F7CD3 /* DetailsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembly.swift; sourceTree = "<group>"; };
+		3EB585072A138E9F007F7CD3 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +117,8 @@
 			children = (
 				3EB584CC2A138E10007F7CD3 /* PetFinderApp.swift */,
 				3EB584CE2A138E10007F7CD3 /* ContentView.swift */,
+				3EB584F72A138E5A007F7CD3 /* Home */,
+				3EB585022A138E79007F7CD3 /* Details */,
 				3EB584D02A138E12007F7CD3 /* Assets.xcassets */,
 				3EB584D22A138E12007F7CD3 /* PetFinder.entitlements */,
 				3EB584D32A138E12007F7CD3 /* Preview Content */,
@@ -127,6 +149,30 @@
 				3EB584EA2A138E12007F7CD3 /* PetFinderUITestsLaunchTests.swift */,
 			);
 			path = PetFinderUITests;
+			sourceTree = "<group>";
+		};
+		3EB584F72A138E5A007F7CD3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3EB584F82A138E72007F7CD3 /* HomeContract.swift */,
+				3EB584F92A138E72007F7CD3 /* HomeRouter.swift */,
+				3EB584FA2A138E72007F7CD3 /* HomeViewController.swift */,
+				3EB584FB2A138E72007F7CD3 /* HomeAssembly.swift */,
+				3EB584FC2A138E72007F7CD3 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3EB585022A138E79007F7CD3 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				3EB585032A138E9F007F7CD3 /* DetailsContract.swift */,
+				3EB585042A138E9F007F7CD3 /* DetailsRouter.swift */,
+				3EB585052A138E9F007F7CD3 /* DetailsViewController.swift */,
+				3EB585062A138E9F007F7CD3 /* DetailsAssembly.swift */,
+				3EB585072A138E9F007F7CD3 /* DetailsViewModel.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +305,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EB585002A138E72007F7CD3 /* HomeAssembly.swift in Sources */,
+				3EB584FF2A138E72007F7CD3 /* HomeViewController.swift in Sources */,
+				3EB585012A138E72007F7CD3 /* HomeViewModel.swift in Sources */,
+				3EB584FD2A138E72007F7CD3 /* HomeContract.swift in Sources */,
+				3EB585082A138E9F007F7CD3 /* DetailsContract.swift in Sources */,
+				3EB584FE2A138E72007F7CD3 /* HomeRouter.swift in Sources */,
 				3EB584CF2A138E10007F7CD3 /* ContentView.swift in Sources */,
+				3EB585092A138E9F007F7CD3 /* DetailsRouter.swift in Sources */,
 				3EB584CD2A138E10007F7CD3 /* PetFinderApp.swift in Sources */,
+				3EB5850B2A138E9F007F7CD3 /* DetailsAssembly.swift in Sources */,
+				3EB5850A2A138E9F007F7CD3 /* DetailsViewController.swift in Sources */,
+				3EB5850C2A138E9F007F7CD3 /* DetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
