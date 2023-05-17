@@ -22,12 +22,12 @@ public enum PetNetworkError: Error {
 struct Token: Codable {
     var token: String
     var type: String
-    var scope: String
+    var expiresIn: String
     
     enum CodingKeys: String, CodingKey {
         case token = "access_token"
         case type = "token_type"
-        case scope
+        case expiresIn = "expires_in"
     }
 }
 
@@ -64,13 +64,6 @@ struct PetFinderMessageErrorModel: Codable {
     enum CodingKeys: String, CodingKey {
         case message
     }
-}
-
-protocol PetFinderApiClientProtocol1111 {
-    
-    // func getTagsRequest()
-    
-    func checkTokenExpiration()
 }
 
 public protocol PetFinderApiClientProtocol {
@@ -157,13 +150,12 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
             return session.dataTaskPublisher(for: request)
                 .mapError { error in
                     PetNetworkError.apiError(message: error.localizedDescription)
-            }
-            .flatMap(maxPublishers: .max(1)) { pair in // Get first value result
+            }.flatMap(maxPublishers: .max(1)) { pair in // Get first value result
                 decode(pair.data)
             }
             .eraseToAnyPublisher() // Remove the AnyPublisher type
         }
-    }
+
 
     //
     // MARK: - Private Methods
@@ -192,14 +184,12 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
     
     private func signInUrlRequest() -> URLRequest? {
         var urlComponents = URLComponents()
-        urlComponents.scheme = scheme
-        urlComponents.host = host
-        urlComponents.path = keywordsPath
+        urlComponents.scheme = self.scheme
+        urlComponents.host = self.host
         urlComponents.queryItems = [URLQueryItem(name: "client_id", value: "\(clientID)"),
-                                    URLQueryItem(name: "client_secret", value: "\(clientSecret)"),
-                                    URLQueryItem(name: "grant_type", value: "client_credentials")]
+                                    URLQueryItem(name: "client_secret", value: "\(clientSecret)")]
         
-        guard let url = URL(string: "https://api.PetFinder.com/oauth/token") else {return nil}
+        guard let url = URL(string: "https://api.petfinder.com/v2/oauth2/token") else {return nil}
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

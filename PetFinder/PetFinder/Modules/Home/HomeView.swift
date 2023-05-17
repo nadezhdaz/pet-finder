@@ -21,41 +21,33 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
                 VStack {
                     HStack {
                     Text(viewModel.greeting)
-                        .font(.header1.mediumEmphasis)
-                        .padding(.top, Semantic.dimension.spacing.large)
-                        .padding(.bottom, Semantic.dimension.spacing.small)
-                        .padding(.horizontal, Semantic.dimension.spacing.medium)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.title)
+                        .padding(.top, 4)
+                        .padding(.bottom, 30)
+                        .padding(.leading, 20)
+                        .frame(width: 150)
 
                         Button(action: {
                             viewModel.resetColorScheme()
                         }) {
                             Image(viewModel.lightBulb)
-                                .foregroundColor(Semantic.Rebranding.color.basic.onBg.secondary.value.color)
-                                .frame(minWidth: 0, maxWidth: .none, alignment: .leading)
-                                .padding(.leading, Semantic.dimension.spacing.small)
+                                .foregroundColor(.gray)
+                                .padding(.trailing, 20)
                         }
-                    }
-                    .background(Semantic.Rebranding.color.basic.bg.foreground.value.color)
-                    // .clipRoundCorners()
-                    .padding(.horizontal, Semantic.dimension.spacing.medium)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        viewModel.goToSearchScreen()
                     }
                     ForEach(viewModel.pets) { pet in
                         PetCardView(viewModel: viewModel)
                     }
-                    .padding(.horizontal, Semantic.dimension.spacing.medium)
+                    .padding(.horizontal, 12)
                 }
-                .padding(.bottom, Semantic.dimension.spacing.small)
+                .padding(.bottom, 20)
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear(perform: viewModel.onAppear)
                 .transaction { transaction in
                     transaction.animation = nil
                 }
             }
-            .background(Semantic.Rebranding.color.basic.bg.primary)
+            .background(Color.white)
             .edgesIgnoringSafeArea(.bottom)
         }
     }

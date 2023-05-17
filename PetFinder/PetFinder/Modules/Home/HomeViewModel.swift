@@ -12,13 +12,13 @@ final class HomeViewModel: HomeViewModelProtocol {
 
     private var cancellables: Set<AnyCancellable> = .init()
     private let router: HomeRouterProtocol
-    private let apiClient: APIClient
+    private let apiClient: PetFinderApiClientProtocol
 
     // MARK: - VIEW MODEL PROPERTIES
 
     // MARK: - INITIALIZATION
 
-    init(router: HomeRouterProtocol, apiClient: APIClient) {
+    init(router: HomeRouterProtocol, apiClient: PetFinderApiClientProtocol) {
         self.router = router
         self.apiClient = apiClient
 
