@@ -7,6 +7,6 @@
 
 import UIKit
 
-class HomeRouter: RouterBase, HomeRouterProtocol {
+class HomeRouter: HomeRouterProtocol {
 
 }

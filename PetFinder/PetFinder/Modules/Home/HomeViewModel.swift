@@ -7,7 +7,7 @@
 
 import Combine
 
-final class HomeViewModel: ViewModelBase, HomeViewModelProtocol {
+final class HomeViewModel: HomeViewModelProtocol {
     // MARK: - PRIVATE PROPERTIES
 
     private var cancellables: Set<AnyCancellable> = .init()
@@ -21,8 +21,6 @@ final class HomeViewModel: ViewModelBase, HomeViewModelProtocol {
     init(router: HomeRouterProtocol, apiClient: APIClient) {
         self.router = router
         self.apiClient = apiClient
-
-        super.init()
 
         setupBindings()
     }
