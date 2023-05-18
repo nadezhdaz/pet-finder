@@ -67,7 +67,7 @@ struct PetFinderMessageErrorModel: Codable {
 }
 
 public protocol PetFinderApiClientProtocol {
-    func getAnimals(forLocation location: String) -> AnyPublisher<Animal, PetNetworkError>
+    func getAnimals(forLocation location: String) -> AnyPublisher<[Animal], PetNetworkError>
 
     func checkTokenExpiration()
 }
@@ -106,6 +106,7 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
 
     init(session: URLSession = .shared) {
         self.session = session
+        signInSavingToken()
     }
 
     public func checkTokenExpiration() {
@@ -113,12 +114,21 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
             refreshToken()
         }
     }
+
+    private func signInSavingToken() {
+            signInRequest(completion: { [weak self] token in
+                if let token = token {
+                    self?.tokenSaved = ((self?.keychainService.saveToken(token: token)) != nil)
+                    self?.lastDateTokenSaved = Date()
+                }
+            })
+        }
     
     //
     // MARK: - Public Methods
     //
 
-        public func getAnimals(forLocation location: String) -> AnyPublisher<Animal, PetNetworkError> {
+        public func getAnimals(forLocation location: String) -> AnyPublisher<[Animal], PetNetworkError> {
             var components = URLComponents()
             components.scheme = self.scheme
             components.host = self.host
@@ -151,7 +161,13 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
                 .mapError { error in
                     PetNetworkError.apiError(message: error.localizedDescription)
             }.flatMap(maxPublishers: .max(1)) { pair in // Get first value result
-                decode(pair.data)
+                Just(pair.data)
+                    .decode(type: T.self, decoder: JSONDecoder())
+                    .mapError { error in
+                        PetNetworkError.apiError(message: error.localizedDescription)
+
+                    }
+                    .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher() // Remove the AnyPublisher type
         }
@@ -194,7 +210,7 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let postData = "client_id=4W6PvhrpejcQ2uV8aPNtnLOD&client_secret=mSVrJKYPtTa1oHlqw7D1cUg54AGqux5E4y5WLCryGbCAg67t&grant_type=client_credentials".data(using: .utf8)
+        let postData = "grant_type=client_credentials&client_id=\(clientID)&client_secret=\(clientSecret)".data(using: .utf8)
         request.httpBody = postData
         return request
     }

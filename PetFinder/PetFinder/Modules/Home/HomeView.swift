@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 
 struct HomeView<ViewModel: HomeViewModelProtocol>: View {
-    @ObservedObject private var viewModel: ViewModel
+    @ObservedObject private var viewModel: HomeViewModel
 
-    init(with viewModel: ViewModel) {
+    init(with viewModel: HomeViewModel) {
         self.viewModel = viewModel
     }
 

@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol DetailsViewModelProtocol: ViewModelProtocolBase, ObservableObject {
+protocol DetailsViewModelProtocol: ObservableObject {
     func onAppear()
 }
 
-protocol DetailsAssemblyProtocol: Assembly {}
+protocol DetailsAssemblyProtocol {}
 
-protocol DetailsRouterProtocol: RouterProtocolBase {}
+protocol DetailsRouterProtocol {}

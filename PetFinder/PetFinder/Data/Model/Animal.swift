@@ -7,18 +7,18 @@
 
 import Foundation
 
-public struct Animal: Codable {
-    let id: Int
-    let url: URL?
-    let type: String
-    let species: String
-    let age: String?
-    let gender: String
-    let size: String?
-    let coat: String?
-    let name: String?
-    let description: String?
-    let status: String?
-    let tags: [String]
-    let distance: Double?
+public struct Animal: Identifiable, Codable {
+    public let id: Int
+    public let url: URL?
+    public let type: String
+    public let species: String
+    public let age: String?
+    public let gender: String
+    public let size: String?
+    public let coat: String?
+    public let name: String?
+    public let description: String?
+    public let status: String?
+    public let tags: [String]
+    public let distance: Double?
 }

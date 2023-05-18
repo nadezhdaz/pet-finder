@@ -8,7 +8,12 @@
 import UIKit
 
 protocol HomeViewModelProtocol: ObservableObject {
+    var greeting: String { get }
+    var lightBulb: String { get }
+    var pets: [Animal] { get }
+
     func onAppear()
+    func resetColorScheme()
 }
 
 protocol HomeAssemblyProtocol {}

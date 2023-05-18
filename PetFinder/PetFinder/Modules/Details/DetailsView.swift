@@ -19,7 +19,7 @@ struct DetailsView<ViewModel: DetailsViewModelProtocol>: View {
         ScrollView {
 
         }
-        .background(Semantic.Rebrending.color.basic.bg.primary.value.color)
+        .background(Color.white)
         .navigationTitle(String.title)
         .onAppear(perform: viewModel.onAppear)
     }
@@ -28,6 +28,6 @@ struct DetailsView<ViewModel: DetailsViewModelProtocol>: View {
 // MARK: - LOCALIZATION
 
 private extension String {
-    /// <#title#>
-    static let title = "<#title#>".localized()
+    /// title
+    static let title = "title"
 }

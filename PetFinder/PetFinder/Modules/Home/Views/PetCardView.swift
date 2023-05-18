@@ -8,49 +8,42 @@
 import SwiftUI
 
 struct PetCardView: View {
-    let viewModel: HomeViewModelProtocol
+    let viewModel: HomeViewModel
     @State private var isTapped: Bool = false
 
     var body: some View {
         VStack {
             HStack {
-                ServiceImageView(url: service.imageUrl,
-                                 isIcon: !service.hasImageFile,
-                                 isTile: isTile,
-                                 imageRenderingMode: service.imageRenderingMode)
+                Image("style.off")
                     .frame(alignment: .center)
-                    .isVisible(!isTile)
 
-                VStack(alignment: .leading, spacing: Semantic.dimension.spacing.none) {
+                VStack(alignment: .leading) {
 
-                    Text(showCategoryName ? service.parentName ?? "Основные услуги" : service.serviceName)
-                        .foregroundColor(serviceTypeForegroundColor(selected: isTapped))
-                        .font(.tertiaryText.lowEmphasis)
-                        .lineLimit(.parentCategoryLines)
+                    Text("pett")
+                        // .foregroundColor(serviceTypeForegroundColor(selected: isTapped))
+                       // .font(.tertiaryText.lowEmphasis)
+                        .lineLimit(.petNameLines)
 
-                    Text(service.serviceName)
-                        .foregroundColor(serviceNameForegroundColor(selected: isTapped))
+                    Text("pet.serviceName")
+                       // .foregroundColor(serviceNameForegroundColor(selected: isTapped))
                         .multilineTextAlignment(.leading)
-                        .lineLimit(.serviceNameLines)
-                        .font(isTile ? .primaryText.highEmphasis : .secondaryText.mediumEmphasis)
-                        .padding(.vertical, Semantic.dimension.spacing.semiSmall)
+                        .lineLimit(.petNameLines)
+                       // .font(isTile ? .primaryText.highEmphasis : .secondaryText.mediumEmphasis)
+                        .padding(.vertical, 4)
 
-                    Spacer(minLength: Semantic.dimension.spacing.small)
-                        .isVisible(!isTile)
-
-                    Text(service.priceDescription)
-                        .foregroundColor(priceForegroundColor(selected: isTapped))
-                        .font(.secondaryText.highEmphasis)
+                    Text("pet.priceDescription")
+                        // .foregroundColor(priceForegroundColor(selected: isTapped))
+                       // .font(.secondaryText.highEmphasis)
                 }
-                .padding(.leading, isTile ? Semantic.dimension.spacing.semiMedium : Semantic.dimension.spacing.none)
+                .padding(.leading, 16)
 
-                Spacer(minLength: Semantic.dimension.spacing.semiMedium)
+                Spacer(minLength: 16)
             }
         }
         .contentShape(Rectangle())
         .onTapGesture {
             isTapped = true
-            viewModel.openPetDetails(with: pet.id)
+            // viewModel.openPetDetails(with: pet.id)
         }
         .onChange(of: isTapped, perform: { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -58,37 +51,14 @@ struct PetCardView: View {
             }
         })
         .frame(maxWidth: .infinity)
-        .padding(.vertical, Semantic.dimension.spacing.semiMedium)
-        .background(backgroundColor(selected: isTapped))
-        .clipRoundCorners()
+        .padding(.vertical, 16)
+        // .clipRoundCorners()
     }
 }
 
 // MARK: - Colors
 
-extension PetCardView {
 
-    private func serviceNameForegroundColor(selected: Bool) -> Color {
-        return selected ? Semantic.Rebranding.color.basic.onBg.onAccent.value.color : Semantic.Rebranding.color.basic.onBg.primary.value.color
-    }
-
-    private func serviceTypeForegroundColor(selected: Bool) -> Color {
-        return selected ? Semantic.Rebranding.color.basic.onBg.onAccent.value.color : Semantic.Rebranding.color.basic.onBg.secondary.value.color
-    }
-
-    private func priceForegroundColor(selected: Bool) -> Color {
-        return selected ? Semantic.Rebranding.color.basic.onBg.onAccent.value.color : Semantic.Rebranding.color.basic.bg.accent.value.color
-    }
-
-    private func backgroundColor(selected: Bool) -> Color {
-
-        if selected {
-            return Semantic.Rebranding.color.chips?.active.value.color ?? Semantic.color.accent_main_button.value.color
-        }
-        return Semantic.Rebranding.color.basic.bg.foreground.value.color
-    }
-
-}
 
 // MARK: - DIMENSIONS
 
@@ -100,5 +70,5 @@ private extension Int {
 // MARK: - LOCALIZATION
 
 private extension String {
-    static let othersName = "".localized()
+    static let othersName = ""
 }

@@ -7,22 +7,20 @@
 
 import Combine
 
-final class DetailsViewModel: ViewModelBase, DetailsViewModelProtocol {
+final class DetailsViewModel: DetailsViewModelProtocol {
     // MARK: - PRIVATE PROPERTIES
 
     private var cancellables: Set<AnyCancellable> = .init()
     private let router: DetailsRouterProtocol
-    private let apiClient: APIClient
+    private let apiClient: PetFinderApiClientProtocol
 
     // MARK: - VIEW MODEL PROPERTIES
 
     // MARK: - INITIALIZATION
 
-    init(router: DetailsRouterProtocol, apiClient: APIClient) {
+    init(router: DetailsRouterProtocol, apiClient: PetFinderApiClientProtocol) {
         self.router = router
         self.apiClient = apiClient
-
-        super.init()
 
         setupBindings()
     }

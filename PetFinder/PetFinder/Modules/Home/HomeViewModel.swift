@@ -10,16 +10,20 @@ import Combine
 final class HomeViewModel: HomeViewModelProtocol {
     // MARK: - PRIVATE PROPERTIES
 
+    @Published var postalCode: String? = "T0J 0A0"
     private var cancellables: Set<AnyCancellable> = .init()
-    private let router: HomeRouterProtocol
     private let apiClient: PetFinderApiClientProtocol
+    @Published var location: String = ""
 
     // MARK: - VIEW MODEL PROPERTIES
 
+    var greeting: String = "Hey Buddy, Adopt a new friend near you!"
+    @Published var lightBulb: String = "style.on"
+    @Published var pets: [Animal] = []
+
     // MARK: - INITIALIZATION
 
-    init(router: HomeRouterProtocol, apiClient: PetFinderApiClientProtocol) {
-        self.router = router
+    init(apiClient: PetFinderApiClientProtocol) {
         self.apiClient = apiClient
 
         setupBindings()
@@ -27,17 +31,41 @@ final class HomeViewModel: HomeViewModelProtocol {
 
     // MARK: - VIEW MODEL METHODS
 
-    func onAppear() {
+    func resetColorScheme() {
 
+    }
+
+    func onAppear() {
+        getClosestAnimals(forLocation: location)
     }
 
     // MARK: - CONFIGURATION
 
     private func setupBindings() {
+        $postalCode.compactMap { $0 }
+            .assign(to: &$location)
+    }
 
+    private func getClosestAnimals(forLocation location: String) {
+        self.apiClient.getAnimals(forLocation: location)
+            .sink { [weak self] completion in
+                switch completion {
+                case let .failure(error):
+                    self?.handleError(error)
+                case .finished: break
+                }
+            } receiveValue: { [weak self] animals in
+                self?.pets = animals
+            }
+            .store(in: &cancellables)
     }
 
     // MARK: - PRIVATE METHODS
+
+    private func handleError(_ error: PetNetworkError) {
+
+    }
+
 }
 
 // MARK: - LOCALIZATION
