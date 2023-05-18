@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PetCardView: View {
     let viewModel: HomeViewModel
+    let pet: Animal
+
     @State private var isTapped: Bool = false
 
     var body: some View {
@@ -19,21 +21,15 @@ struct PetCardView: View {
 
                 VStack(alignment: .leading) {
 
-                    Text("pett")
-                        // .foregroundColor(serviceTypeForegroundColor(selected: isTapped))
-                       // .font(.tertiaryText.lowEmphasis)
+                    Text(pet.name ?? "")
                         .lineLimit(.petNameLines)
 
-                    Text("pet.serviceName")
-                       // .foregroundColor(serviceNameForegroundColor(selected: isTapped))
+                    Text(pet.age ?? "")
                         .multilineTextAlignment(.leading)
                         .lineLimit(.petNameLines)
-                       // .font(isTile ? .primaryText.highEmphasis : .secondaryText.mediumEmphasis)
                         .padding(.vertical, 4)
 
-                    Text("pet.priceDescription")
-                        // .foregroundColor(priceForegroundColor(selected: isTapped))
-                       // .font(.secondaryText.highEmphasis)
+                    Text(pet.gender)
                 }
                 .padding(.leading, 16)
 
@@ -43,7 +39,6 @@ struct PetCardView: View {
         .contentShape(Rectangle())
         .onTapGesture {
             isTapped = true
-            // viewModel.openPetDetails(with: pet.id)
         }
         .onChange(of: isTapped, perform: { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -52,7 +47,6 @@ struct PetCardView: View {
         })
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
-        // .clipRoundCorners()
     }
 }
 

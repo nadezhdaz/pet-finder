@@ -46,18 +46,21 @@ final class HomeViewModel: HomeViewModelProtocol {
             .assign(to: &$location)
     }
 
-    private func getClosestAnimals(forLocation location: String) {
-        self.apiClient.getAnimals(forLocation: location)
-            .sink { [weak self] completion in
-                switch completion {
-                case let .failure(error):
-                    self?.handleError(error)
-                case .finished: break
+    private func getClosestAnimals(forLocation location: String) -> Future<[Animal], PetNetworkError> {
+        return Future() { [weak self] promise in
+            guard let self = self else { return }
+            self.apiClient.getAnimals(forLocation: location)
+                .sink { [weak self] completion in
+                    switch completion {
+                    case let .failure(error):
+                        self?.handleError(error)
+                    case .finished: break
+                    }
+                } receiveValue: { [weak self] animals in
+                    self?.pets = animals
                 }
-            } receiveValue: { [weak self] animals in
-                self?.pets = animals
-            }
-            .store(in: &cancellables)
+                .store(in: &self.cancellables)
+        }
     }
 
     // MARK: - PRIVATE METHODS

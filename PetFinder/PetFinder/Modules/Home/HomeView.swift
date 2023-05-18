@@ -36,7 +36,7 @@ struct HomeView<ViewModel: HomeViewModelProtocol>: View {
                         }
                     }
                     ForEach(viewModel.pets) { pet in
-                        PetCardView(viewModel: viewModel)
+                        PetCardView(viewModel: viewModel, pet: pet)
                     }
                     .padding(.horizontal, 12)
                 }

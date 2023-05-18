@@ -85,7 +85,6 @@ class PetFinderApiClient: PetFinderApiClientProtocol {
     private let path = "/v2"
     private let hostPath = "https://api.petfinder.com"
     private let authorizationPath = "/v2/oauth2/token"
-    // private let apiEndpoint = "https://api.petfinder.com/v1/keywords"
     
     private let clientID = "hnPhcHMRg8KhJEcqgSObWnqHfb2fmqsdcne4kGphAfBggx6LSG"
     private let clientSecret = "UWmU34VM2t1CDHzVbUTIiPl5Vm3k5r3x9ISUT9ym"
